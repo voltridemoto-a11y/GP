@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-150 flex items-center gap-2 text-sm;
+  }
+  .btn-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-gray-100 font-medium px-4 py-2 rounded-lg transition-colors duration-150 flex items-center gap-2 text-sm;
+  }
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-150 flex items-center gap-2 text-sm;
+  }
+  .card {
+    @apply bg-gray-900 border border-gray-800 rounded-xl p-5;
+  }
+  .input {
+    @apply bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-3 py-2 w-full text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 placeholder-gray-500;
+  }
+  .label {
+    @apply text-xs font-medium text-gray-400 uppercase tracking-wider mb-1 block;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* ─── Splash Screen Animations ─── */
+
+/* Grid background */
+.splash-grid {
+  background-image:
+    linear-gradient(rgba(220, 38, 38, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 38, 38, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridShift 8s linear infinite;
+}
+@keyframes gridShift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+/* Scan line */
+.splash-scanline {
+  animation: scanline 3s linear infinite;
+}
+@keyframes scanline {
+  0%   { top: -2px; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Slow ring rotation */
+.splash-rotate-slow {
+  animation: rotateSlow 12s linear infinite;
+  transform-origin: center;
+}
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.splash-rotate-reverse {
+  animation: rotateReverse 18s linear infinite;
+  transform-origin: center;
+}
+@keyframes rotateReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* Logo glow pulse */
+.splash-logo-glow {
+  animation: logoGlow 2s ease-in-out infinite;
+}
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(220,38,38,0.5)); }
+  50%       { filter: drop-shadow(0 0 45px rgba(220,38,38,0.9)); }
+}
+
+/* Blinking cursor */
+.splash-blink {
+  animation: blink 0.8s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Terminal cursor underline */
+.splash-cursor::after {
+  content: '▌';
+  animation: blink 0.8s step-end infinite;
+  color: #ef4444;
+}
+
+/* ─── High-Tech UI Extras ─── */
+
+/* Glowing card border on hover */
+.card-tech {
+  @apply bg-gray-900 border border-gray-800 rounded-xl transition-all duration-300;
+}
+.card-tech:hover {
+  border-color: rgba(220, 38, 38, 0.4);
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.08);
+}
+
+/* Data label */
+.data-label {
+  @apply font-mono text-[10px] tracking-widest uppercase text-gray-500;
+}
+
+/* Pulse dot */
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Number ticker */
+.ticker-in {
+  animation: tickerIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes tickerIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Shake animation for vault PIN error */
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+/* Timeline connector */
+.timeline-line {
+  background: linear-gradient(to bottom, #DC2626, #374151);
+}
